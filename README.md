@@ -11,18 +11,31 @@ Ce projet est né de la volonté de mon mentor Thierry Chappuis de créer une pl
 L'idée derrière cette plateforme pourrait se résumer en trois parties : la création et la communication autour d'évènement, la création d'un blog participatif, et l'aggrégation de toute les resources utiles en un seul et même endroit. La communauté openclassrooms python étant très active sur le discord d'application python, ce site y serait étroitement lié. C'est pourquoi, une des volontés de ce projet et de pouvoir aussi bien récupérer des ressources proposés sur le DA python pour les exporter / aggréger sur notre site communautaire, qu'a l'inverse publier des informations du site sur DA python, notamment les évènements comme les webinaires. 
 
 ## Objectif à court terme (MVP)
-* Partie event :
-  * Système d'événement pour les webinaires avec inscription des participants
-* Partie ressources : 
-  * Pour retrouver les anciens webinaires
-  * Insérer une ressource
-* Partie blog :
-  * Création d'article
-  * Création d'une série d'article
-  * Commentaire sur les articles
-* Système de tag (commun aux trois parties : event, blog et ressource)
-* Système de catégorie (commun au trois parties : event, blog et ressouce)
+*Partie event :
+  *Système d'événement pour les webinaires
+  *Inscription des participants
+*Partie ressources : 
+  *Insérer une ressource
+*Partie blog :
+  *Création d'article
+  *Création d'une série d'article
+*Système de tag (commun aux trois parties : event, blog et ressource)
+*Système de catégorie (commun au trois parties : event, blog et ressouce)
 
 ## Objectifs à moyen terme
+*Partie event :
+ *Publication d'évènement automatique et répété sur le channel général de discord (utilisation API wagtail)
+ *Envoie d'email aux inscrits
+*Partie Blog :
+ *Commentaires sur les articles
+*Partie ressources:
+ *Récupération automatique des webinaires passés
 
 ## Objecifs à long terme
+*Gamification du site avec un système de niveau en fonction de points gagnés par la participation à la vie du site (animer un webinaire = 20 points, créer un article = 10 points, laisser un commentaire = 1 point, etc...)
+*Partie event :
+ * Intégration des vidéos directement sur la plateforme ?
+*Partie Blog :
+ * 
+*Partie ressources :
+ *Créer un bot pour récupérer automatiquement les ressources proposé sur les channels DA python et les intégrer sur le site (nécessite un bot discord + API wagtail)
