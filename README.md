@@ -9,3 +9,11 @@ Ce projet est né de la volonté de mon mentor Thierry Chappuis de créer une pl
 * Difficulté pour toucher l'ensemble des étudiants lors de la promotion d'un webinaire.
 
 L'idée derrière cette plateforme pourrait se résumer en trois parties : la création et la communication autour d'évènement, la création d'un blog participatif, et l'aggrégation de toute les resources utiles en un seul et même endroit. La communauté openclassrooms python étant très active sur le discord d'application python, ce site y serait étroitement lié. C'est pourquoi, une des volontés de ce projet et de pouvoir aussi bien récupérer des ressources proposés sur le DA python pour les exporter / aggréger sur notre site communautaire, qu'a l'inverse publier des informations du site sur DA python, notamment les évènements comme les webinaires. 
+
+## Objectif à court terme (MVP)
+* Système d'événement pour les webinaires avec inscription des participants
+
+
+## Objectifs à moyen terme
+
+## Objecifs à long terme
