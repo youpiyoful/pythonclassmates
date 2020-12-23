@@ -24,20 +24,20 @@ L'idée derrière cette plateforme pourrait se résumer en trois parties : la cr
 
 ## Objectifs à moyen terme
 * Partie event :
- * Publication d'évènement automatique et répété sur le channel général de discord (utilisation API wagtail)
- * Envoie d'email aux inscrits
+  * Publication d'évènement automatique et répété sur le channel général de discord (utilisation API wagtail)
+  * Envoie d'email aux inscrits
 * Partie Blog :
- * Commentaires sur les articles
+  * Commentaires sur les articles
 * Partie ressources:
- * Récupération automatique des webinaires passés
+  * Récupération automatique des webinaires passés
 
 ## Objecifs à long terme
 * Gamification du site avec un système de niveau en fonction de points gagnés par la participation à la vie du site (animer un webinaire = 20 points, créer un article = 10 points, laisser un commentaire = 1 point, etc...)
 * Partie event :
- * Intégration des vidéos directement sur la plateforme ?
+  * Intégration des vidéos directement sur la plateforme ?
 * Partie Blog : ... 
 * Partie ressources :
- * Créer un bot pour récupérer automatiquement les ressources proposé sur les channels DA python et les intégrer sur le site (nécessite un bot discord + API wagtail)
+  * Créer un bot pour récupérer automatiquement les ressources proposé sur les channels DA python et les intégrer sur le site (nécessite un bot discord + API wagtail)
 
 ## Solution technique
 * **langage** : python
