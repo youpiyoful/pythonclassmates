@@ -11,8 +11,17 @@ Ce projet est né de la volonté de mon mentor Thierry Chappuis de créer une pl
 L'idée derrière cette plateforme pourrait se résumer en trois parties : la création et la communication autour d'évènement, la création d'un blog participatif, et l'aggrégation de toute les resources utiles en un seul et même endroit. La communauté openclassrooms python étant très active sur le discord d'application python, ce site y serait étroitement lié. C'est pourquoi, une des volontés de ce projet et de pouvoir aussi bien récupérer des ressources proposés sur le DA python pour les exporter / aggréger sur notre site communautaire, qu'a l'inverse publier des informations du site sur DA python, notamment les évènements comme les webinaires. 
 
 ## Objectif à court terme (MVP)
++ Partie event :
 * Système d'événement pour les webinaires avec inscription des participants
-
++ Partie ressources : 
+* Pour retrouver les anciens webinaires
+* Insérer une ressource
++ Partie blog :
+* Création d'article
+* Création d'une série d'article
+* Commentaire sur les articles
++ Système de tag (commun aux trois parties : event, blog et ressource)
++ Système de catégorie (commun au trois parties : event, blog et ressouce)
 
 ## Objectifs à moyen terme
 
