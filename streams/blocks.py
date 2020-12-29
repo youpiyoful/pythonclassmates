@@ -1,4 +1,5 @@
 """Streamfields live in here."""
+# from typing import Text
 from wagtail.core import blocks
 
 class TitleAndTextBlock(blocks.StructBlock):
@@ -11,3 +12,15 @@ class TitleAndTextBlock(blocks.StructBlock):
         # templates = "streams/title_and_text_block.html"
         icon = "edit"
         label = "Title & Text"
+
+
+class CTABlock(blocks.StructBlock):
+    """A simple call to action section"""
+    title = blocks.CharBlock(required=True,  max_length=60)
+    text = blocks.RichTextBlock(required=True, features=["bold", "italic"])
+    button_action = blocks.PageChooserBlock(required=False)
+    # button_action_2 = blocks.PageChooserBlock(required=False)
+
+    class Meta:
+        icon = "placeholder"
+        label = "Call to Action"
