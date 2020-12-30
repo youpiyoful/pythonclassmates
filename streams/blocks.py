@@ -1,9 +1,9 @@
 """Streamfields live in here."""
+from wagtail.admin.edit_handlers import FieldPanel
 
 from wagtail.core import blocks
 from wagtail.core.templatetags.wagtailcore_tags import richtext
 from wagtail.images.blocks import ImageChooserBlock
-
 
 class TitleAndTextBlock(blocks.StructBlock):
     """Title and text and nothing else."""
@@ -82,3 +82,5 @@ class CTABlock(blocks.StructBlock):
     class Meta:
         icon = "placeholder"
         label = "Call to Action"
+
+
