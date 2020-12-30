@@ -16,7 +16,7 @@ class EventsPage(Page):
     ]
 
     class Meta: #noqa
-        verbose_name = "Event Page"
+        verbose_name = "Events Page"
         verbose_name_plural = "Events Pages"
 
 class EventPage(Page):
@@ -32,4 +32,4 @@ class EventPage(Page):
 
     class Meta: #noqa
         verbose_name = "Event Page"
-        verbose_name_plural = "Events Pages"
+        verbose_name_plural = "Event Pages"
