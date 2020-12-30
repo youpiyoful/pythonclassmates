@@ -1,0 +1,19 @@
+
+{% load wagtailcore_tags %}
+
+{% with categories as page.categories.all %}
+            
+{% if categories %}
+    <h3>Categories</h3>
+    <ul>
+        
+        {% for category in categories %}
+            <li style="display: inline;">
+                {{ category.name }}
+            </li>
+        {% endfor %}
+            
+    </ul>
+{% endif %}
+    
+{% endwith %}
