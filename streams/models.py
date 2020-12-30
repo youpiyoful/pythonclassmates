@@ -23,7 +23,7 @@ class Category(models.Model):
 
 
 class PageTag(TaggedItemBase):
-    """Class of website tag"""
+    """Class of website tag when u can add linked page with tags"""
     content_object = ParentalKey('blog.PostPage', related_name='post_tags')
 
 @register_snippet
