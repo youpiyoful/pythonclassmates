@@ -17,6 +17,10 @@ class Category(models.Model):
         FieldPanel('slug'),
     ]
 
+    def __str__(self): # noqa
+        return self.name
+    
+    
     class Meta: # noqa
         verbose_name = "Category"
         verbose_name_plural = "Categories"
