@@ -83,9 +83,9 @@
                     <p>ici nous allons mettre le texte principal</p>
                 </section>
             -->
-            <aside class="left-aside">
+            <!-- <aside class="left-aside"> -->
                 <!-- <p>ici nous allons mettre les articles récents</p> -->
-                <h2 class="text-center">Table of content</h2>
+                <!-- <h2 class="text-center">Table of content</h2>
                 <table class="table">
                     <thead>
                         <tr>
@@ -95,22 +95,22 @@
                     <tbody>
                         <tr>
                             <td>{pending ...}</td>
-                        </tr>
+                        </tr> -->
                         {#{% for array in self.arrays %} #}
-                            <tr>
+                            <!-- <tr> -->
                                 <td>{#{{self.arrays[array]}}#}</td>
                                 {#{% for subpart in self.arrays[array] %}#}
                                     <td>{#{{subpart}}#}</td>
                                 {#{% endfor %}#}
             
-                            </tr>
+                            <!-- </tr> -->
                         {#{% endfor %}#}
         
-                    </tbody>
-                </table>
+                    <!-- </tbody>
+                </table> -->
                 {% block aside %}
                 {% endblock aside %}
-            </aside>
+            <!-- </aside>
         
             <aside class="right-aside">
                 <h2 class="text-center">Articles récent</h2>
@@ -119,9 +119,9 @@
                         <tr>
                             <th scope="col">Date</th>
                             <th scope="col">Title</th>
-                            <th scope="col">link</th>
+                            <th scope="col">link</th> -->
                             <!-- <th scope="col">Handle</th> -->
-                        </tr>
+                        <!-- </tr>
                     </thead>
                     <tbody>
                         <tr class="table-active">
@@ -140,12 +140,12 @@
                             <td><a href="#">The bird article</a></td>
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
                 {% block aside_left %}
         
                 {% endblock aside_left %}
         
-            </aside>
+            <!-- </aside> -->
         
         
         </div>
