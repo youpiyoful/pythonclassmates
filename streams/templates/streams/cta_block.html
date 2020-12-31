@@ -1,0 +1,11 @@
+{% load wagtailcore_tags %}
+
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ self.title }}</h5>
+            <p class="card-text">{{ self.text|richtext }}</p>
+            <a href="{{ self.button_action }}" class="btn btn-primary">GO !</a>
+        </div>
+    </div>
+</div>

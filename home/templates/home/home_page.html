@@ -17,7 +17,13 @@
     <section class="container">
         <p class="text-center">Imagine que tu as quelque chose d'intéressant à dire, bin dit le gros !</p>
     </section>
-
+    
+    <div class="row">
+        {% for block in page.content %}
+            {% include_block block %}
+        {% endfor %}
+    </div>
+        
     
     <!-- {% for block in page.content %}
         {% include "streams/title_and_text_block.html" %}
