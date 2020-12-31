@@ -1,4 +1,4 @@
-"""The blog page models."""
+"""Blog and post pages."""
 from django.db import models
 from django import forms
 
@@ -13,7 +13,7 @@ class BlogPage(Page):
     """Blog page class."""
 
     description = models.CharField(max_length=255, blank=True,)
-    # TODO card list 
+    # TODO card list
 
     content_panels = Page.content_panels + [
         FieldPanel('description', classname="full")
@@ -22,6 +22,10 @@ class BlogPage(Page):
     class Meta: #noqa
         verbose_name = "Blog Page"
         verbose_name_plural = "Blog Pages"
+
+# TODO : we can use get_context for list postpages in blog page instead of use
+# get_children in the html template 
+# https://www.youtube.com/watch?v=6YrbkE0_RPQ&list=PLMQHMcNi6ocsS8Bfnuy_IDgJ4bHRRrvub&index=16
 
 class PostPage(Page):
     """PostPage is the page of specific articles"""
