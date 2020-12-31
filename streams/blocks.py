@@ -72,14 +72,24 @@ class SimpleRichtextBlock(blocks.RichTextBlock):
         icon = "edit"
         label = "Simple RichText"
 
+
 class CTABlock(blocks.StructBlock):
     """A simple call to action section"""
     title = blocks.CharBlock(required=True,  max_length=60)
+    # title_text_and_button = blocks.ListBlock(
+    #     blocks.StructBlock(
+    #         ('title', blocks.CharBlock(required=True, max_length=40)),
+    #         ('text', blocks.TextBlock(required=True, max_length=200)),
+    #         ('button_action', blocks.URLBlock(required=True)),
+    #     )
+    # )
     text = blocks.RichTextBlock(required=True, features=["bold", "italic"])
-    button_action = blocks.PageChooserBlock(required=False)
+    # # button_action = blocks.PageChooserBlock(required=False)
+    button_action = blocks.URLBlock(required=True)
     # button_action_2 = blocks.PageChooserBlock(required=False)
 
     class Meta:
+        template = "streams/cta_block.html"
         icon = "placeholder"
         label = "Call to Action"
 
