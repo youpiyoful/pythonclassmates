@@ -50,7 +50,7 @@ class PostPage(Page):
         related_name="+",
         on_delete=models.SET_NULL,
     )
-
+    description = models.CharField(null=False, blank=False, max_length=255)
     # table_of_recent_article
     # table_of_contents
 
