@@ -39,19 +39,19 @@
         
                 <div class="collapse navbar-collapse" id="navbarColor03">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link nav" href="/">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/blog">Blog</a>
+                            <a class="nav-link" href="/blog/">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/events">Events</a>
+                            <a class="nav-link" href="/events/">Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/resources">Resources</a>
+                            <a class="nav-link" href="/resources/">Resources</a>
                         </li>
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -135,7 +135,7 @@
                             <td>Larry the Bird va te faire foutre bien profond</td>
                             <td><a href="#">The bird article</a></td>
                         </tr>
-                    </tbody>
+                    </tbody>page
                 </table> -->
                 {% block aside_left %}
         
@@ -154,5 +154,14 @@
     
     {# Override this in templates to add extra javascript #}
     {% endblock %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var url = window.location;
+            $('ul.navbar-nav a[href="'+ url +'"]').parent().addClass('active');
+            $('ul.navbar-nav a').filter(function() {
+                return this.href == url;
+            }).parent().addClass('active');
+        });
+    </script> 
 </body>
 </html>
