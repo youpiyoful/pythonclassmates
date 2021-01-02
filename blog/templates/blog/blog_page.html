@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 
 {% block content %}
@@ -8,13 +8,29 @@
 
         <h1>{{ page.title }}</h1>
         <div class="intro mt-3">{{ page.description }}</div>
-        
-        <div class="mt-5">
-            {% for post in page.get_children %}
-                <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+
+        <div class="mt-5 text-centerle code
+        ">
+            {% for post in posts %}
+                {% image post.blog_image fill-200x250 as blog_img %}
+                <a href="{{ post.url  }}">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ blog_img.url }}" alt="{{ blog_img.alt }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ post.custom_title }}</h5>
+                                    <p class="card-text"></p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             {% endfor %}
         </div>
     </section>
-        
+
 {% endblock content %}
-    
