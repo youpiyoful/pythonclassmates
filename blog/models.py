@@ -24,7 +24,10 @@ class BlogPage(Page):
     def get_context(self, request, *args, **kwargs):
         """Adding custom stuff to our context."""
         context = super().get_context(request, *args, **kwargs)
-        context["posts"] = PostPage.objects.live().public()
+        post_page = PostPage.objects.live().public()
+        context["posts"] = post_page
+        # time_from_last_update = now() - post_page.last_published_at
+        # TODO faire un calcul pour déterminer depuis quand l'article à été créé.
         return context
 
     class Meta: #noqa
@@ -71,6 +74,7 @@ class PostPage(Page):
     tags = ClusterTaggableManager(through='streams.PageTag', blank=True)
     content_panels = Page.content_panels + [
         FieldPanel('custom_title'),
+        FieldPanel('description'),
         ImageChooserPanel('blog_image'),
         StreamFieldPanel('content'),
         FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
