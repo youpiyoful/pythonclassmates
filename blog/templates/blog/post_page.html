@@ -4,7 +4,7 @@
 
 
 {% block content %}
-    <section class="container mt-5 pt-5">
+    <section class="container mt-5">
         {% image self.blog_image width-1500 as blog_img %}
         <div class="jumbotron"
             style="background-image: url('{{ blog_img.url }}'); background-size: cover; background-position: center center; height: 30rem;">
@@ -14,6 +14,11 @@
             <img src="{{ blog_img.url }}" alt="{{ blog_img.alt }}">
         </div> -->
         {{self.custom_title}}
+        
+        {% for block in page.content %}
+            {% include_block block %}
+        {% endfor %}
+            
 
         <p class="mt-5 pt-5"><a href="{{ self.get_parent.url }}">Return to blog</a></p>
 
