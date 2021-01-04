@@ -156,9 +156,16 @@
     {% endblock %}
     <script type="text/javascript">
         $(document).ready(function () {
-            var url = window.location;
+            var url = window.location.href;
             $('ul.navbar-nav a[href="'+ url +'"]').parent().addClass('active');
             $('ul.navbar-nav a').filter(function() {
+                /*console.log('url => ', url)
+                if (url.charAt(url.length-1 == '0')){
+                    console.log('héo')
+                    var url = url + 'home';
+                    console.log(url);
+                }
+                return this.href.includes(url);*/
                 return this.href == url;
             }).parent().addClass('active');
         });
