@@ -4,35 +4,57 @@
 
 
 {% block content %}
-    <section class="container mt-5">
-        {% image self.blog_image width-1500 as blog_img %}
-        <div class="jumbotron"
-            style="background-image: url('{{ blog_img.url }}'); background-size: cover; background-position: center center; height: 30rem;">
+    <!-- <section class="container mt-5"> -->
+    {% image self.blog_image width-1500 as blog_img %}
+    <div class="jumbotron"
+        style="background-image: url('{{ blog_img.url }}'); background-size: cover; background-position: center center; height: 30rem;">
+    </div>
+    <!-- <h1 class="text-center">{{ self.title }}</h1> -->
+    <p class="mt-5 pt-5"><a href="{{ self.get_parent.url }}">Return to blog</a></p>
+    <div class="container mt-5 mb-5">
+        <div class="text-center">
+            <h1>{{ self.title }}</h1>
+            <div class="d-flex justify-content-center">
+                {% for iter in self.blog_authors.all %}
+                    {% if iter.author.image %}
+                        {% image iter.author.image fill-50x50 as img %}
+                        <div>
+                            <img src="{{ img.url }}" class="rounded-circle" alt="{{ iter.author.name }}">
+                        </div>
+                    {% endif %}
+                    {% if iter.author.website %}
+                        <a href="{{ iter.author.website }}">
+                            {{ iter.author.name }}
+                        </a>
+                    {% else %}
+                        {{ iter.author.name }}
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
-        <h1 class="text-center">{{ self.title }}</h1>
-        <!-- <div class="col-md-4">
-            <img src="{{ blog_img.url }}" alt="{{ blog_img.alt }}">
-        </div> -->
-        {{self.custom_title}}
+    </div>
+    </div>
+    {% include 'streams/category.html' %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                {% for block in self.content %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+
         
-        {% for block in page.content %}
-            {% include_block block %}
-        {% endfor %}
-            
 
-        <p class="mt-5 pt-5"><a href="{{ self.get_parent.url }}">Return to blog</a></p>
+    {% include 'streams/tags.html' %}
 
-        <div class="mt-3 mb-3">{{ self.text|richtext }}</div>
-
-        <p><a href="{{ self.get_parent.url }}">Return to blog</a></p>
-
-
-
-        
-        {% include 'streams/tags.html' %}
-        {% include 'streams/category.html' %}
-            
-            
-    </section>
+    <p><a href="{{ self.get_parent.url }}">Return to blog</a></p>
+    <!-- </section> -->
 {% endblock content %}
     
