@@ -180,7 +180,8 @@ WAGTAIL_SITE_NAME = "pythonclassmates"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
-# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # WAGTAIL_PASSWORD_MANAGEMENT_ENABLED = True
 # WAGTAIL_PASSWORD_RESET_ENABLED = True
