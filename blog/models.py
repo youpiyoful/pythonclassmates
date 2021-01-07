@@ -13,9 +13,14 @@ from streams import blocks
 
 class BlogPage(Page):
     """Blog page class."""
+    subpage_types = [
+        'PostPage',
+    ]
 
+    parent_page_types = []
+
+    # TODO trouver un moyen de bloquer l'édition de cette page !
     description = models.CharField(max_length=255, blank=True,)
-    # TODO card list
 
     content_panels = Page.content_panels + [
         FieldPanel('description', classname="full")
@@ -40,6 +45,9 @@ class BlogPage(Page):
 
 class PostPage(Page):
     """PostPage is the page of specific articles"""
+    subpage_types = []
+    parent_page_types = ['BlogPage']
+
     custom_title = models.CharField(
         max_length=100,
         blank=False,
