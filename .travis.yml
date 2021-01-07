@@ -36,7 +36,7 @@ branches:
     - develop
     - master
 
-env: DJANGO_SETTINGS_MODULE="himyb.settings.travis"
+env: DJANGO_SETTINGS_MODULE="pythonclassmates.settings.travis"
 
 services:
   - postgresql
