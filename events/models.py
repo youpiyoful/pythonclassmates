@@ -8,6 +8,11 @@ from wagtail.admin.edit_handlers import FieldPanel
 class EventsPage(Page):
     """Events page class."""
 
+    subpage_types = [
+        'EventPage',
+    ]
+    parent_page_types = []
+
     description = models.CharField(max_length=255, blank=True,)
     # TODO card list 
 
@@ -21,6 +26,9 @@ class EventsPage(Page):
 
 class EventPage(Page):
     """EventPage is the class of specific event"""
+    subpage_types = []
+    parent_page_types = ['EventsPage']
+
     body = RichTextField(blank=True)
     # TODO
     # inscription
