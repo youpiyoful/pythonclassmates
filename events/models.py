@@ -52,12 +52,13 @@ class EventsPage(Page):
         context["events"] = event_page
         return context
 
-    def send_data_to_resources_page(self):
+    @staticmethod
+    def send_data_to_resources_page():
         """
         copy the data found in the events table
         and the sends in the resource tables
         """
-        # TODO
+        # TODO créer une crontask pour lancer la fonction une fois par jour
         today = timezone.localtime(timezone.now()).date()
         events_past = EventPage.objects.all().filter(end__lt=today)
         for event_past in events_past:
@@ -70,11 +71,15 @@ class EventsPage(Page):
                 # resource.publish()
 
 
-
-    def delete_past_events(self):
+    @staticmethod
+    def delete_past_events():
         """Removes past events from the events table."""
-        #TODO
-        pass
+        #TODO create a django custom cmd with this method
+        today = timezone.localtime(timezone.now()).date()
+        events_past = EventPage.objects.all().filter(end__lt=today)
+        for event_past in events_past:
+            event_past.delete()
+        
 
     class Meta: #noqa
         verbose_name = "Events Page"
