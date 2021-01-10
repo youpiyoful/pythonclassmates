@@ -12,9 +12,8 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.tags import ClusterTaggableManager
 
+from resources.models import ResourcePage, ResourcesPage
 
-
-# from resources.models import ResourcePage, ResourcesPage
 
 # class EventPageManager(PageManager):
 #     """ Custom manager for Event pages """
@@ -53,21 +52,24 @@ class EventsPage(Page):
         context["events"] = event_page
         return context
 
-    # def send_data_to_resources_page(self):
-    #     """
-    #     copy the data found in the events table
-    #     and the sends in the resource tables
-    #     """
-    #     # TODO
-    #     today = timezone.localtime(timezone.now()).date()
-    #     # today = datetime.date.today()
-    #     events_past = EventPage.objects.all().filter(end__lt=today)
-    #     for event_past in events_past:
-    #         resource, created = ResourcePage.objects.get_or_create(
-    #             title=event_past.title,
-    #             description=event_past.description,
-    #
-    #         )
+    def send_data_to_resources_page(self):
+        """
+        copy the data found in the events table
+        and the sends in the resource tables
+        """
+        # TODO
+        today = timezone.localtime(timezone.now()).date()
+        events_past = EventPage.objects.all().filter(end__lt=today)
+        for event_past in events_past:
+            try:
+                ResourcePage.objects.get(title=event_past.title, description=event_past.description)
+            except Page.DoesNotExist:
+                resource_parent = ResourcesPage.objects.all()[0]
+                resource = ResourcePage(title=event_past.title, slug=event_past.slug)
+                resource_parent.add_child(instance=resource)
+                # resource.publish()
+
+
 
     def delete_past_events(self):
         """Removes past events from the events table."""
