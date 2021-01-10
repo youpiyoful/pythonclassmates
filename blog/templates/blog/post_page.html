@@ -15,7 +15,7 @@
         <div class="text-center">
             <h1>{{ self.title }}</h1>
             <div class="d-flex justify-content-center">
-                {% for iter in self.blog_authors.all %}
+                {% for iter in self.authors.all %}
                     {% if iter.author.image %}
                         {% image iter.author.image fill-50x50 as img %}
                         <div>

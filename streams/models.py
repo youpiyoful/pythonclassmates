@@ -44,7 +44,7 @@ class Author(models.Model):
 
     name = models.CharField(max_length=100)
     website = models.URLField(blank=True, null=True)
-    
+    # TODO un même auteur peut être renseigné plusieurs fois dans le même article.
     # image = models.ForeignKey(
     #     "wagtailimages.Image",
     #     on_delete=models.SET_NULL,
@@ -76,5 +76,5 @@ class Author(models.Model):
         return self.name
 
     class Meta:  # noqa
-        verbose_name = "Blog Author"
-        verbose_name_plural = "Blog Authors"
+        verbose_name = "Author"
+        verbose_name_plural = "Authors"
