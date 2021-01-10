@@ -11,6 +11,7 @@ from modelcluster.tags import ClusterTaggableManager
 
 from streams import blocks
 
+
 class BlogPage(Page):
     """Blog page class."""
     subpage_types = [
