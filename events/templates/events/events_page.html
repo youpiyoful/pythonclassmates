@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{# {% load wagtailimages_tags %} #}
+
+
+{% block content %}
+    <section class="container mt-5 pt-4">
+
+        <h1>{{ self.title }}</h1>
+        <div class="intro mt-3"><p>{{ self.description }}</p></div>
+
+        <div class="mt-5 text-centerle code">
+            {% for event in events %}
+                {# {% image post.blog_image fill-200x250 as blog_img %} #}
+                <div class="card mb-3" style="max-width: 540px;">
+                    <a href="{{ event.url  }}">
+                        <div class="row g-0">
+                            <!-- <div class="col-md-4">
+                                <img src="{{ event_img.url }}" alt="{{ event_img.alt }}">
+                            </div> -->
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ event.title }}</h5>
+                                    <p class="card-text">{{ event.description }}</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            Début : {{ event.start }} 
+                                        </small>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            Fin : {{ event.end }} 
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock content %}

@@ -43,7 +43,7 @@ L'idée derrière cette plateforme pourrait se résumer en trois parties : la cr
 
 ## Solution technique
 * **langage** : python
-* **librairie de test** : pytest
+* **librairie de test** : django.test, wagatail.test
 * **framework** : django
 * **cms** : wagtail
 * **serveur de base de données** : postgresql
