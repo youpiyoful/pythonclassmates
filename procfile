@@ -1,0 +1,1 @@
+web: gunicorn pythonclassmates.wsgi --log-file -
