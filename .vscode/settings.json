@@ -1,0 +1,4 @@
+{
+    // "python.autoComplete.extraPaths": ["/home/youpiyoful/dev/python_project/pythonclassmates"],
+    "python.languageServer": "Pylance",
+}
