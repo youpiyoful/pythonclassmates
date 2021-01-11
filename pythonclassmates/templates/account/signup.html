@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+
+<div class="d-flex justify-content-center mt-5 pt-5">
+    <div class="col-5">
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            <h1 class="text-center mb-5">{% trans "Sign Up" %}</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <div class="text-center mb-3">
+                <button type="submit" class="btn btn-primary">{% trans "Sign Up" %}</button>
+            </div>
+            <p>
+                {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

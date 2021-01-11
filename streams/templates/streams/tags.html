@@ -1,0 +1,16 @@
+
+{% load wagtailcore_tags %}
+
+{% with self.tags.all as tags %}
+    {% if tags %}
+        <!-- <h2>Tags</h2> -->
+            {% for tag in tags %}
+                <a href="{{ self.get_parent.url }}?tag={{ tag.name }}">
+                    <span class="badge badge-primary">
+                        {{ tag.name }}
+                    </span>
+                </a>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}

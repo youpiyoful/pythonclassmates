@@ -1,0 +1,35 @@
+aside {
+    width: 20%;
+    overflow: hidden;
+}
+
+aside > p {
+    margin: .5rem;
+}
+
+.right-aside {
+    float: right;
+    padding-right: .5rem;
+    margin-right: .5rem;
+}
+
+.left-aside {
+    float: left;
+    padding-left: .5rem;
+    margin-left: .5rem;   
+}
+
+.jumbotron {
+    margin-top: 5em;
+}
+
+@media (max-width: 991.98px) {
+    aside {
+        width: 80%;
+    }
+    .left-aside, .right-aside {
+        float: none;
+        margin: .5rem;
+        /* padding: .5rem; */
+    }
+}

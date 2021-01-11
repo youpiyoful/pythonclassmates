@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load wagtailimages_tags %}
+
+
+{% block content %}
+    <section class="container mt-5 pt-4">
+
+        <h1>{{ page.title }}</h1>
+        <div class="intro mt-3">{{ page.description }}</div>
+
+        <div class="mt-5 text-centerle code">
+            {% for post in posts %}
+                {% image post.blog_image fill-200x250 as blog_img %}
+                <div class="card mb-3" style="max-width: 540px;">
+                    <a href="{{ post.url  }}">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ blog_img.url }}" alt="{{ blog_img.alt }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ post.custom_title }}</h5>
+                                    <p class="card-text">{{ post.description }}</p>
+                                    <p class="card-text">Auteur : {{ post.username }}</p>
+                                    <p class="card-text"><small class="text-muted">{{ post.last_published_at }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock content %}

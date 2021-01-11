@@ -1,0 +1,45 @@
+
+# language: python
+# python:
+#     - "3.8"
+# install:
+#     - pip3 install pipenv
+#     - pipenv install
+# # script:
+# #     - pipenv run invoke publish
+# # after_failure:
+# #     - pipenv run invoke revert
+# deploy:
+#   provider: pages
+#   repo: PythonClassmates/pythonclassmates.org
+#   target_branch: gh-pages
+#   skip_cleanup: true
+#   github_token: $GITHUB_TOKEN
+#   local_dir: output
+#   on:
+#     branch: master
+
+
+
+distri: focal
+language: python
+python:
+  - "3.8"
+
+before_script:
+  - pip install -r requirements.txt
+  # - install-webdrivers --path ./
+  
+branches:
+  only:
+    # - himyb/project10
+    - develop
+    - master
+
+env: DJANGO_SETTINGS_MODULE="pythonclassmates.settings.travis"
+
+services:
+  - postgresql
+
+script:
+  - python manage.py test
