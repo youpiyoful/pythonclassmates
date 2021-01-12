@@ -120,6 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ALLOWED_HOSTS = ['*'] 
 
 # Authentication Backends
 AUTHENTICATION_BACKENDS = (
