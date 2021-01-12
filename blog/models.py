@@ -18,7 +18,7 @@ class BlogPage(Page):
         'PostPage',
     ]
 
-    parent_page_types = []
+    parent_page_types = ['home.HomePage']
 
     # TODO trouver un moyen de bloquer l'édition de cette page !
     description = models.CharField(max_length=255, blank=True,)

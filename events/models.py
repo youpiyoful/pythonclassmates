@@ -35,7 +35,9 @@ class EventsPage(Page):
     subpage_types = [
         'EventPage',
     ]
-    parent_page_types = []
+    parent_page_types = [
+        'home.HomePage'
+    ]
 
     description = models.CharField(max_length=255, blank=True,)
     # TODO card list 

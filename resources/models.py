@@ -7,7 +7,7 @@ class ResourcesPage(Page):
     subpage_types = [
         'ResourcePage',
     ]
-    parent_page_types = []
+    parent_page_types = ['home.HomePage']
     # title
     # description
 
