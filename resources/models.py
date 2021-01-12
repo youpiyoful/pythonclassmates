@@ -51,3 +51,7 @@ class ResourcePage(Page):
     class Meta:
         verbose_name = "Resource Page"
         verbose_name_plural = "Resource pages"
+
+class ResourceTag(TaggedItemBase):
+    """Class of website tag when u can add linked page with tags"""
+    content_object = ParentalKey('ResourcePage', related_name='resource_tags')
