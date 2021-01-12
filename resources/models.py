@@ -24,6 +24,10 @@ class ResourcesPage(Page):
         context["resources"] = resources
         return context
 
+    class Meta: #noqa
+        verbose_name = "Resources Page"
+        verbose_name_plural = "Resources Pages"
+
 class ResourcePage(Page):
     """Detail of specific resource"""
     subpage_types = []
@@ -37,4 +41,3 @@ class ResourcePage(Page):
     # author
 
     
-
