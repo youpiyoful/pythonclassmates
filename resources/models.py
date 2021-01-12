@@ -1,5 +1,6 @@
 """Page containing ResourcesPage and ResourcePage classes"""
 from django.db import models
+from django import forms
 from taggit.models import TaggedItemBase, Tag as TaggitTag
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Page
@@ -45,9 +46,16 @@ class ResourcePage(Page):
     description = models.CharField(null=True, blank=False, max_length=255)
     # link
     # publication_date
-    # categories
+    categories = ParentalManyToManyField('streams.Category', blank=True)
     tags = ClusterTaggableManager(through='ResourceTag', blank=True)
     # author
+
+    content_panels = Page.content_panels + [
+        FieldPanel('custom_title'),
+        FieldPanel('description'),
+        FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('tags'),
+    ]
 
     class Meta:
         verbose_name = "Resource Page"
