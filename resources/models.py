@@ -1,7 +1,10 @@
 """Page containing ResourcesPage and ResourcePage classes"""
 from django.db import models
+from taggit.models import TaggedItemBase, Tag as TaggitTag
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Page
+from modelcluster.fields import ParentalKey, ParentalManyToManyField
+
 
 class ResourcesPage(Page):
     """List all the resources of site"""
@@ -32,12 +35,19 @@ class ResourcePage(Page):
     """Detail of specific resource"""
     subpage_types = []
     parent_page_types = ['ResourcesPage']
-    # description
+    custom_title = models.CharField(
+        max_length=100,
+        blank=False,
+        null=True,
+        help_text='Overwrites the default title',
+    )
+    description = models.CharField(null=True, blank=False, max_length=255)
     # link
-    # title
     # publication_date
     # categories
     # tags
     # author
 
-    
+    class Meta:
+        verbose_name = "Resource Page"
+        verbose_name_plural = "Resource pages"
