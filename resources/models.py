@@ -4,6 +4,7 @@ from taggit.models import TaggedItemBase, Tag as TaggitTag
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Page
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from modelcluster.tags import ClusterTaggableManager
 
 
 class ResourcesPage(Page):
@@ -45,7 +46,7 @@ class ResourcePage(Page):
     # link
     # publication_date
     # categories
-    # tags
+    tags = ClusterTaggableManager(through='ResourceTag', blank=True)
     # author
 
     class Meta:
