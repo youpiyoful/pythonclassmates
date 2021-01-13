@@ -15,7 +15,13 @@ class HomePage(Page):
 
     # templates = ""
     # max_count = 3
-
+    parent_page_types = ['wagtailcore.Page']
+    subpage_types = [
+        'blog.BlogPage',
+        'events.EventsPage',
+        'resources.ResourcesPage',
+        'flex.FlexPage',
+    ]
     banner_title = models.CharField(max_length=100, blank=False, null=True,)
     banner_subtitle = RichTextField(features=['bold', 'italic'])
     banner_image = models.ForeignKey(

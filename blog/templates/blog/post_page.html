@@ -5,34 +5,35 @@
 
 {% block content %}
     <!-- <section class="container mt-5"> -->
-    {% image self.blog_image width-1500 as blog_img %}
-    <div class="jumbotron"
-        style="background-image: url('{{ blog_img.url }}'); background-size: cover; background-position: center center; height: 30rem;">
-    </div>
-    <!-- <h1 class="text-center">{{ self.title }}</h1> -->
-    <p class="mt-5 pt-5"><a href="{{ self.get_parent.url }}">Return to blog</a></p>
-    <div class="container mt-5 mb-5">
-        <div class="text-center">
-            <h1>{{ self.title }}</h1>
-            <div class="d-flex justify-content-center">
-                {% for iter in self.authors.all %}
-                    {% if iter.author.image %}
-                        {% image iter.author.image fill-50x50 as img %}
-                        <div>
-                            <img src="{{ img.url }}" class="rounded-circle" alt="{{ iter.author.name }}">
-                        </div>
-                    {% endif %}
-                    {% if iter.author.website %}
-                        <a href="{{ iter.author.website }}">
-                            {{ iter.author.name }}
-                        </a>
-                    {% else %}
-                        {{ iter.author.name }}
-                    {% endif %}
-                </div>
-            {% endfor %}
+    <div class="pt-5 mt-4">
+        {% image self.blog_image width-1500 as blog_img %}
+        <div class="jumbotron"
+            style="background-image: url('{{ blog_img.url }}'); background-size: cover; background-position: center center; height: 30rem;">
         </div>
-    </div>
+        <!-- <h1 class="text-center">{{ self.title }}</h1> -->
+        <p class="mt-5 pt-5"><a href="{{ self.get_parent.url }}">Return to blog</a></p>
+        <div class="container mt-5 mb-5">
+            <div class="text-center">
+                <h1>{{ self.title }}</h1>
+                <div class="d-flex justify-content-center">
+                    {% for iter in self.authors.all %}
+                        {% if iter.author.image %}
+                            {% image iter.author.image fill-50x50 as img %}
+                            <div>
+                                <img src="{{ img.url }}" class="rounded-circle" alt="{{ iter.author.name }}">
+                            </div>
+                        {% endif %}
+                        {% if iter.author.website %}
+                            <a href="{{ iter.author.website }}">
+                                {{ iter.author.name }}
+                            </a>
+                        {% else %}
+                            {{ iter.author.name }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
     {% include 'streams/category.html' %}
 

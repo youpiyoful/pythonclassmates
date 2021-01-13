@@ -31,6 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = [
+    'auditor',
     'blog',
     'events',
     'home',
@@ -40,7 +41,9 @@ INSTALLED_APPS = [
     'resources',
 
     'wagtail.contrib.forms',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.routable_page',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -121,6 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ALLOWED_HOSTS = ['*'] 
 
 # Authentication Backends
 AUTHENTICATION_BACKENDS = (

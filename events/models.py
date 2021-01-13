@@ -1,7 +1,10 @@
 """The events page models."""
+from auditor.models import Auditors
 from django.db import models
 from django import forms
 from django.utils import timezone
+from django.shortcuts import redirect, render
+
 # import datetime
 
 from taggit.models import TaggedItemBase
@@ -11,6 +14,7 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.tags import ClusterTaggableManager
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 
 from resources.models import ResourcePage, ResourcesPage
 
@@ -35,7 +39,9 @@ class EventsPage(Page):
     subpage_types = [
         'EventPage',
     ]
-    parent_page_types = []
+    parent_page_types = [
+        'home.HomePage'
+    ]
 
     description = models.CharField(max_length=255, blank=True,)
     # TODO card list 
@@ -85,18 +91,17 @@ class EventsPage(Page):
         verbose_name = "Events Page"
         verbose_name_plural = "Events Pages"
 
-class EventPage(Page):
+class EventPage(RoutablePageMixin, Page):
     """EventPage is the class of specific event"""
     subpage_types = []
     parent_page_types = ['EventsPage']
 
     body = RichTextField(blank=True)
-
     start = models.DateTimeField("start", null=True)
     end = models.DateTimeField('end', null=True)
-
     categories = ParentalManyToManyField('streams.Category', blank=True)
     tags = ClusterTaggableManager(through='events.EventPageTag', blank=True)
+    auditors = models.ManyToManyField(Auditors)
 
     # TODO
     # Empêcher que end soit antérieur à start à l'enregistrement d'une page
@@ -110,17 +115,29 @@ class EventPage(Page):
         FieldPanel('end'),
         FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
         FieldPanel('tags'),
+        # InlinePanel("authors", label="Author", max_num=1),
         MultiFieldPanel(
             [
-                InlinePanel("authors", label="Author", min_num=1, max_num=4)
+                InlinePanel("authors", label="Author", max_num=1) # min_num=1, max_num=4
             ],
-            heading="Author(s)"
+            heading="Author"
         ),
     ]
 
     class Meta: #noqa
         verbose_name = "Event Page"
         verbose_name_plural = "Event Pages"
+
+    @route(r'^event-register/$')
+    def event_register(self, request, *args, **kwargs):
+        event_id = request.POST.get('eventId')
+        full_name = request.POST.get('fullname')
+        email = request.POST.get('email')
+        print('data => ', event_id, full_name, email)
+        # context = self.get_context(request, *args, **kwargs)
+        # return render(request, "home/subscribe.html", context)
+        event_page = EventsPage.objects.all()[0]
+        return redirect('http://localhost:8000/events/')
 
 
 class EventAuthorsOrderable(Orderable):
