@@ -99,7 +99,6 @@ class EventPage(Page):
 
     categories = ParentalManyToManyField('streams.Category', blank=True)
     tags = ClusterTaggableManager(through='events.EventPageTag', blank=True)
-
     # TODO
     # Empêcher que end soit antérieur à start à l'enregistrement d'une page
     # inscription
@@ -112,11 +111,12 @@ class EventPage(Page):
         FieldPanel('end'),
         FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
         FieldPanel('tags'),
+        # InlinePanel("authors", label="Author", max_num=1),
         MultiFieldPanel(
             [
-                InlinePanel("authors", label="Author", min_num=1, max_num=4)
+                InlinePanel("authors", label="Author", max_num=1) # min_num=1, max_num=4
             ],
-            heading="Author(s)"
+            heading="Author"
         ),
     ]
 
