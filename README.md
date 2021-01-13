@@ -20,7 +20,6 @@ L'idée derrière cette plateforme pourrait se résumer en trois parties : la cr
   * Insérer une ressource
 * Partie blog :
   * Création d'article
-  * Création d'une série d'article
 * Système de tag (commun aux trois parties : event, blog et ressource)
 * Système de catégorie (commun au trois parties : event, blog et ressource)
 
@@ -32,6 +31,7 @@ L'idée derrière cette plateforme pourrait se résumer en trois parties : la cr
   * Commentaires sur les articles
 * Partie ressources:
   * Récupération automatique des webinaires passés
+* Création d'une partie cours dédiés aux sujets plus long (série d'article)
 
 ## Objectifs à long terme
 * Gamification du site avec un système de niveau en fonction de points gagnés par la participation à la vie du site (animer un webinaire = 20 points, créer un article = 10 points, laisser un commentaire = 1 point, etc...)
