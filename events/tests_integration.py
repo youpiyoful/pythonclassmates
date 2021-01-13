@@ -1,5 +1,7 @@
 """Integration tests of the blog app pages."""
 # from wagtail.images.blocks import ImageChooserBlock
+from unittest.case import SkipTest
+from resources.models import ResourcesPage
 from wagtail.core.models import Page
 from wagtail.tests.utils import WagtailPageTests
 from wagtail.tests.utils.form_data import nested_form_data, streamfield
@@ -7,7 +9,7 @@ from events.models import EventPage, EventsPage
 from home.models import HomePage
 from blog.models import BlogPage, PostPage
 from events.management.commands.copy_and_delete_past_event import Command
-import datetime
+from django.utils import timezone
 # from flex.models import FlexPage
 # from resources import ResourcesPage
 
@@ -104,47 +106,43 @@ class EventPageTests(WagtailPageTests):
         # tags
         # content_panels
 
-# class CommandTest(WagtailPageTests):
-#     """
-#     Test the custom django command which copies past
-#     events to resources before deleting them.
-#     """
-    # fixtures = ['data.json']
-    # def setUp(self):
-    #     """create event past"""
-        
-        # home_page = HomePage(
-        #     title="home page",
-        #     slug="home-page",
-        #     banner_title="banner",
-        #     banner_subtitle=""
-        # )
-            
-        # )
+@SkipTest
+class CommandTest(WagtailPageTests):
+    """
+    Test the custom django command which copies past
+    events to resources before deleting them.
+    """
+    fixtures = ['data.json']
 
-        # child_page = EventsPage(
-        #     title="page parent",
-        #     slug="parent-page",
-        # )
-        # home_page.add_child(child_page)
-        # self.events_past = EventsPage.objects.all()[0]
-        # past_date = datetime.datetime.now() - datetime.timedelta(days=1)
-        # self.event_past = EventPage.objects.create(
-        #     title="Past event",
-        #     slug="past-event",
-        #     start=past_date,
-        #     end=past_date,
-        #     depth=4,
-        #     path='0001000100020001',
-        # )
-        # Page.objects.create(id=)
-        # self.events_past = EventsPage.add_child(instance=event_past)
-        # self.events_past.add_child(instance=event_past)
-
-    # def test_event_past_is_successfully_copy_and_delete(self):
-    #     """ Test than event past is copy to resources and delete from events"""
+    def test_event_past_is_successfully_copy_and_delete(self):
+        """ Test than event past is copy to resources and delete from events"""
         
-    #     # Command.handle()
-    #     # self.assertIsNone(self.events_past)
-    #     home_page = HomePage.objects.all()[0]
-    #     self.assertEqual(home_page.title, "Home")
+        # self.assertIsNone(self.events_past)
+        today = timezone.localtime(timezone.now()).date()
+        event_past = EventsPage.objects.all().filter(end_lt=today)
+        
+        # control than event_past exist and he is less than today
+        self.assertLess(event_past, today)
+        resources = ResourcesPage.objects.all()
+
+        # control than resources is empty
+        self.assertEqual(len(resources), 0)
+        Command.handle()
+
+        # check than resources is created
+        self.assertEqual(len(resources), 1)
+        
+        # control than event_past len() is equal to 0 after custom cmd copy and delete
+        self.assertEquals(len(event_past), 0)
+
+
+    def test_than_resources_is_child_of_resource(self):
+        """check than resources exist in the child_of resource page"""
+        resource_parent = ResourcesPage.get_children().live()
+        
+        # check than resource_parent have no children before cmd.hanle()
+        self.assertEqual(len(resource_parent), 0)
+        Command.handle()
+        
+        # check than resource_parent have one children or more
+        self.assertTrue(len(resource_parent) >= 1)
