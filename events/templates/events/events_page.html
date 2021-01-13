@@ -32,6 +32,23 @@
                                             Fin : {{ event.end }} 
                                         </small>
                                     </p>
+                                   
+                                            
+                                    {% with event.authors.all as authors %}
+                                    
+                                        {% if authors %}
+                                            <p class="card-text">
+                                                <small class="text-muted">
+                                                    Author :
+                                                    {% for iter in authors %}
+                                                        {{ iter.author }}
+                                                    {% endfor %}
+                                                </small>
+                                            </p>
+                                        {% endif %}
+                                        
+                                    {% endwith %}
+                                                
                                 </div>
                             </div>
                         </div>
