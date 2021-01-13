@@ -21,6 +21,7 @@ env_path = Path('.') / '.env'
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 SECRET_KEY = os.getenv('SECRET_KEY')
+
 # SECRET_KEY = xxxxx 
 
 # Quick-start development settings - unsuitable for production
