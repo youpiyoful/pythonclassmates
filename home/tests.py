@@ -1,4 +1,5 @@
 """Integration tests of the home app pages."""
+from flex.models import FlexPage
 from wagtail.core.models import Page
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.tests.utils import WagtailPageTests
@@ -6,7 +7,6 @@ from wagtail.tests.utils.form_data import nested_form_data, streamfield
 from blog.models import BlogPage, PostPage
 from home.models import HomePage
 from events.models import EventPage, EventsPage
-# from flex.models import FlexPage
 from resources.models import ResourcesPage, ResourcePage
 
 
@@ -14,7 +14,7 @@ class HomePageTests(WagtailPageTests):
     """Home page behavior test."""
     def test_home_page_allowed_events_blog_and_resources_page(self):
         """test homepage allowed only events, blog and resources page"""
-        self.assertAllowedSubpageTypes(HomePage, {EventsPage, BlogPage, ResourcesPage})
+        self.assertAllowedSubpageTypes(HomePage, {EventsPage, BlogPage, ResourcesPage, FlexPage})
 
     def test_can_create_blog_events_and_resources_page(self):
         """
