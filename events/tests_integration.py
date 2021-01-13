@@ -136,7 +136,7 @@ class CommandTest(WagtailPageTests):
         self.assertEquals(len(event_past), 0)
 
 
-    def test_than_resources_is_child_of_resource(self):
+    def test_than_resource_is_child_of_resources(self):
         """check than resources exist in the child_of resource page"""
         resource_parent = ResourcesPage.get_children().live()
         
