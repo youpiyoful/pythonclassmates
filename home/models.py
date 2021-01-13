@@ -20,6 +20,7 @@ class HomePage(Page):
         'blog.BlogPage',
         'events.EventsPage',
         'resources.ResourcesPage',
+        'flex.FlexPage',
     ]
     banner_title = models.CharField(max_length=100, blank=False, null=True,)
     banner_subtitle = RichTextField(features=['bold', 'italic'])
