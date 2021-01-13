@@ -15,3 +15,5 @@ class Auditors(models.Model):
     class Meta:  # noqa
         verbose_name = "Auditor"
         verbose_name_plural = "Auditors"
+
+
