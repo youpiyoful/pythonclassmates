@@ -172,8 +172,8 @@ STATICFILES_FINDERS = [
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'home/static'),
-    os.path.join(BASE_DIR, 'pythonclassmates/static'),
+    # os.path.join(BASE_DIR, 'home/static'),
+    # os.path.join(BASE_DIR, 'pythonclassmates/static'),
 )
 
 # Static files (CSS, JavaScript, Images)
