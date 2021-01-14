@@ -32,17 +32,11 @@ class BlogPage(Page):
         context = super().get_context(request, *args, **kwargs)
         post_page = PostPage.objects.live().public()
         context["posts"] = post_page
-        # time_from_last_update = now() - post_page.last_published_at
-        # TODO faire un calcul pour déterminer depuis quand l'article à été créé.
         return context
 
     class Meta: #noqa
         verbose_name = "Blog Page"
         verbose_name_plural = "Blog Pages"
-
-# TODO : we can use get_context for list postpages in blog page instead of use
-# get_children in the html template 
-# https://www.youtube.com/watch?v=6YrbkE0_RPQ&list=PLMQHMcNi6ocsS8Bfnuy_IDgJ4bHRRrvub&index=16
 
 class PostPage(Page):
     """PostPage is the page of specific articles"""
